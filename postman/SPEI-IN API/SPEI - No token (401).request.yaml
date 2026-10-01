@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{baseUrl}}/api/v1/spei/inbound"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "claveRastreo": "SPEI-UNAUTHORIZED",
+      "monto": 1000.00,
+      "cuentaBeneficiaria": "{{clabe}}"
+    }
+order: 5000

@@ -1,0 +1,18 @@
+$kind: http-request
+url: https://auth.lab.dnu.mx/realms/fineract_keycloak/protocol/openid-connect/token
+method: POST
+headers:
+  Content-Type: application/x-www-form-urlencoded
+body:
+  type: urlencoded
+  content:
+    grant_type: password
+    client_id: candidate-api
+    client_secret: candidate-secret
+    username: candidato01
+    password: Candidato123!
+    scope: openid
+scripts:
+  - type: afterResponse
+    code: pm.environment.set('accessToken', pm.response.json().access_token);
+order: 1000

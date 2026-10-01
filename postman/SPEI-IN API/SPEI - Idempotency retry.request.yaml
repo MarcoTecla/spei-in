@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/api/v1/spei/inbound"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Idempotency-Key: "{{idempotencyKey}}"
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "claveRastreo": "SPEI20261001120000",
+      "monto": 1000.00,
+      "cuentaBeneficiaria": "{{clabe}}",
+      "concepto": "Abono cliente demo"
+    }
+order: 3000

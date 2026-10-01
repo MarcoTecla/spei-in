@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{baseUrl}}/api/v1/spei/inbound"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Idempotency-Key: "{{idempotencyKey}}"
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "claveRastreo": "SPEI20261001120000",
+      "monto": 1000.00,
+      "cuentaBeneficiaria": "{{clabe}}",
+      "concepto": "Abono cliente demo"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('HTTP 200', () => pm.response.to.have.status(200));
+      pm.environment.set('speiId', pm.response.json().id);
+order: 2000

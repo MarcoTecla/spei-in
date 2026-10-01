@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: ecc6820d-0d23-432d-8897-ea39e730995b
+
+localResources:
+  collections:
+    - ../SPEI-IN API
